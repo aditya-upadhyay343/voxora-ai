@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Speech-to-Text Converter</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="container">
+      <h1>🎙️ AI Speech-to-Text Converter</h1>
+      <p class="subtitle">
+        Convert spoken language into written text using an AI speech-recognition
+        model (Whisper) &mdash; running locally on your own computer.
+      </p>
+      <nav class="top-nav">
+        <a href="{{ url_for('transcription.index') }}" class="nav-link active">Home</a>
+        <a href="{{ url_for('transcription.history_page') }}" class="nav-link">History</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="card">
+      <h2>1. Provide Audio</h2>
+
+      <div class="input-tabs">
+
+        <!-- Microphone recording -->
+        <div class="tab-panel">
+          <h3>🎤 Record from Microphone</h3>
+          <div class="recorder-controls">
+            <button id="startRecordBtn" class="btn btn-primary">Start Recording</button>
+            <button id="stopRecordBtn" class="btn btn-danger" disabled>Stop Recording</button>
+            <span id="recordingStatus" class="status-badge status-idle">Idle</span>
+            <span id="recordingTimer" class="timer">00:00</span>
+          </div>
+          <audio id="audioPreview" controls class="audio-preview hidden"></audio>
+        </div>
+
+        <div class="divider">OR</div>
+
+        <!-- File upload -->
+        <div class="tab-panel">
+          <h3>📁 Upload Audio File</h3>
+          <input type="file" id="audioFileInput"
+                 accept=".wav,.mp3,.m4a,.flac,.ogg,.webm" />
+          <p class="hint">Supported formats: WAV, MP3, M4A, FLAC, OGG (max 25 MB)</p>
+        </div>
+      </div>
+
+      <h2>2. Choose Language</h2>
+      <select id="languageSelect" class="language-select">
+        {% for code, label in languages.items() %}
+          <option value="{{ code }}">{{ label }}</option>
+        {% endfor %}
+      </select>
+
+      <div class="transcribe-action">
+        <button id="transcribeBtn" class="btn btn-primary btn-large">
+          Transcribe Audio
+        </button>
+      </div>
+
+      <div id="loadingIndicator" class="loading hidden">
+        <div class="spinner"></div>
+        <span>Transcribing audio with AI... this can take a moment.</span>
+      </div>
+
+      <div id="errorBox" class="error-box hidden"></div>
+    </section>
+
+    <section class="card" id="resultCard">
+      <h2>3. Transcription Result</h2>
+
+      <div class="result-meta">
+        <span id="resultLanguage" class="meta-pill">Language: -</span>
+        <span id="resultWordCount" class="meta-pill">Words: 0</span>
+        <span id="resultCharCount" class="meta-pill">Characters: 0</span>
+        <span id="resultStatus" class="meta-pill">Status: waiting</span>
+      </div>
+
+      <textarea id="resultText" class="result-textarea" readonly
+        placeholder="Your transcription will appear here..."></textarea>
+
+      <div class="result-actions">
+        <button id="copyBtn" class="btn btn-secondary">📋 Copy Text</button>
+        <button id="downloadBtn" class="btn btn-secondary" disabled>⬇️ Download TXT</button>
+        <button id="clearBtn" class="btn btn-outline">🗑️ Clear</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Built with Flask + OpenAI Whisper. All processing happens locally on your machine.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+id,audio_file,transcription,language
+1,sample_en_001.wav,"Good morning everyone welcome to today's meeting",en
+2,sample_en_002.wav,"Please send me the report by end of day",en
+3,sample_en_003.wav,"The weather is really nice today so let us go for a walk",en
+4,sample_en_004.wav,"Can you please repeat that I did not hear you clearly",en
+5,sample_en_005.wav,"Thank you very much for your help today",en
+6,sample_hi_001.wav,"नमस्ते आप कैसे हैं",hi
+7,sample_hi_002.wav,"आज मौसम बहुत अच्छा है",hi
+8,sample_hi_003.wav,"कृपया मुझे रिपोर्ट भेज दीजिए",hi
+9,sample_hi_004.wav,"मुझे थोड़ी मदद चाहिए",hi
+10,sample_hi_005.wav,"बहुत बहुत धन्यवाद",hi

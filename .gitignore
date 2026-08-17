@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+env/
+.venv/
+
+# Flask / project runtime files
+database/transcriptions.db
+database/test_transcriptions.db
+uploads/*
+!uploads/.gitkeep
+outputs/*
+!outputs/.gitkeep
+
+# Whisper downloaded model weights cache (varies by OS, kept out of git)
+*.pt
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Test artifacts
+.pytest_cache/
