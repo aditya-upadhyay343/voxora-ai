@@ -54,7 +54,7 @@ def _get_model(model_size):
     return _model_cache[model_size]
 
 
-def transcribe_audio(file_path, model_size="base", language="auto"):
+def transcribe_audio(file_path, model_size="tiny", language="auto"):
     """
     Transcribe the audio file at `file_path` into text.
 
