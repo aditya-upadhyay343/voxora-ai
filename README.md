@@ -1,3 +1,16 @@
+---
+title: Voxora AI
+emoji: 🎙️
+colorFrom: blue
+colorTo: purple
+sdk: docker
+app_port: 7860
+---
+
+# Voxora AI
+
+AI-powered Speech-to-Text web application using Flask and Whisper.
+
 # AI Speech-to-Text Converter
 
 A local, beginner-friendly web application that converts spoken audio
